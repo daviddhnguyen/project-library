@@ -19,10 +19,19 @@ function addBookToLibrary(title, author, pages, status) {
   // do stuff here
   const newBook = new Book(title, author, pages, status);
   myLibrary.push(newBook);
-  
+
   renderCards()
 }
 
 function renderCards() {
-  myLibrary.forEach()
+  myLibrary.forEach((book, index) => {
+
+  })
+}
+
+function addBookEventListener() {
+  const addBook = document.querySelector('.addBook-button');
+  addBook.addEventListener('click', ()=> {
+    const form = document.
+  })
 }

@@ -105,9 +105,13 @@ html {
 }
 
 .delete-book {
-    min-height: 20px;
+    display: inline-block;
     font-size: 10px;
-    padding: 6px
+    font-weight: 400;
+    line-height: 10px;
+    min-height: 20px;
+    outline: 0;
+    padding: 6px 8px;
 }
 
 /* ADD CSS FOR TOGGLE */
@@ -116,8 +120,8 @@ html {
 .switch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 40px;
+    height: 24px;
   }
   
   /* Hide default HTML checkbox */
@@ -143,8 +147,8 @@ html {
   .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
+    height: 16px;
+    width: 16px;
     left: 4px;
     bottom: 4px;
     background-color: white;
@@ -161,9 +165,9 @@ html {
   }
   
   input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+    -webkit-transform: translateX(16px);
+    -ms-transform: translateX(16px);
+    transform: translateX(16px);
   }
   
   /* Rounded sliders */
