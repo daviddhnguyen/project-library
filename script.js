@@ -9,7 +9,8 @@ myLibrary.push(book1, book2, book3);
 
 //EVENT LISTENERS
 const addBook = document.querySelector('#addBook-btn');
-const addBookDialog = document.querySelector('#addBook');
+const addBookDialog = document.querySelector('#addBook-dialog');
+
 const newTitle = addBookDialog.querySelector('#title');
 const newAuthor = addBookDialog.querySelector('#author');
 const newPages = addBookDialog.querySelector('#pages');
