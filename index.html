@@ -7,8 +7,16 @@
 
     <script src="./script.js" defer></script>
     <link rel="stylesheet" href="./style.css"/>
+
+    <link rel="icon" type="image/x-icon" href="./images/logo-duck.svg">
+
+    <meta name="description" content="David's Odin Project - Library Project">
+    <meta name="author" content="David DH Nguyen">
+    <meta name="keywords" content="ODIN BREADZ LIBRARY PROJECT">
 </head>
 <body>
+    <!-- MAIN PAGE SETUP -->
+
     <div class="main">
         <div class="header-container">
             <h1>Breadz Library</h1>
@@ -22,7 +30,7 @@
                     <input type="checkbox">
                     <span class="slider round"></span>
                 </label>
-                <button class="delete-book btn">Delete</button>
+                <button class="btn sm-btn" id="delete-book">Delete</button>
             </div>
             <div class="book-card">
                 <div class="title">title2</div>
@@ -32,13 +40,46 @@
                     <input type="checkbox">
                     <span class="slider round"></span>
                 </label>
-                <button class="delete-book btn">Delete</button>
+                <button class="btn sm-btn" id="delete-book">Delete</button>
             </div>
         </div>
         <div>
-            <button class="addBook-button btn">Add Book
+            <button class="btn" id="addBook-btn">Add Book
             </button>
         </div>
+    </div>
+
+    <!-- DIALOG FORM TO ADD NEW BOOKS -->
+
+    <div class="dialog-wrapper">
+        <dialog id="addBook">
+            <form action="" method="post">
+                <div class="input-container">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" required placeholder="Title of the book">
+                </div>
+                <div class="input-container">
+                    <label for="author">Author:</label>
+                    <input type="text" id="author" name="author" required placeholder="Full name of the author">
+                </div>
+                <div class="input-container">
+                    <label for="pages">Number of pages:</label>
+                    <input type="text" id="pages" name="pages" required placeholder="Number of pages">
+                </div>
+                <div class="input-container">
+                    <label for="status"> Have you read the book?
+                        <select name="status" id="status">
+                            <option value="default">Not read yet</option>
+                            <option>Read</option>
+                        </select>
+                    </label>
+                </div>
+                <div>
+                    <button class="btn sm-btn cancel-addBook" value="cancel" formmethod="dialog">Cancel</button>
+                    <button type="submit" class="btn sm-btn submit-addBook" value="default">Submit</button>
+                </div>
+            </form>
+        </dialog>
     </div>
 </body>
 </html>
