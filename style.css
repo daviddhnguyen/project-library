@@ -23,14 +23,14 @@
     font-family: 'DM Sans', sans-serif;
 }
 
-html {
+html, body, .main {
     color: var(--font-dark);
+    height: 100%;
 }
 
 /* SET MAIN LAYOUT */
 
 .main {
-    height: 100vh;
     display: grid;
     grid-template-rows: 1fr 6fr;
 }
@@ -84,15 +84,9 @@ html {
 }
 
 /* DIALOG BOX*/
-
-#addBook {
-    margin: 0;
-    position:absolute
-}
-
-.dialog-wrapper {
-    top: 100px;
-    left: 100px;
+::backdrop {
+    background-color: black;
+    opacity: 0.50;
 }
 
 /* BUTTON STYLING */
