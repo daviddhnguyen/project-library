@@ -1,0 +1,176 @@
+/* IMPORT FONT AND COLORS */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,700;0,9..40,800;0,9..40,1000;1,9..40,400&display=swap');
+
+/* SET GLOBAL VARIABLES */
+:root {
+    --card-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    --content-background: #e2e8f0;
+    --white: #f8fafc;
+    --card-radius: 0.5rem;
+    --slate: #1e293b;
+    --font-dark: #0f172a;
+    --font-light: #f1f5f9;
+}
+
+/* RESET STYLE */
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'DM Sans', sans-serif;
+}
+
+html {
+    color: var(--font-dark);
+}
+
+/* SET MAIN LAYOUT */
+
+.main {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 6fr;
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--slate);
+    color: var(--font-light);
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10vw, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(20vh, 1fr));
+    grid-auto-rows: auto;
+    gap: 2rem;
+    background-color: var(--content-background);
+    padding: 2rem;
+}
+
+.book-card {
+    background-color: var(--white);
+    color: var(--font-dark);
+    box-shadow: var(--card-shadow);
+    border-radius: var(--card-radius);
+
+
+}
+
+.addBook-button {
+    position: absolute;
+    top: 90%;
+    left: 90%;
+}
+
+.btn {
+    background: #FF4742;
+    border: 1px solid #FF4742;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 12px 14px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+}
+
+.btn:hover,
+.btn:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #FF4742;
+}
+
+.btn:active {
+  opacity: .5;
+}
+
+.delete-book {
+    min-height: 20px;
+    font-size: 10px;
+    padding: 6px
+}
+
+/* ADD CSS FOR TOGGLE */
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
