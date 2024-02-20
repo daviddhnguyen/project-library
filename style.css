@@ -96,7 +96,39 @@ dialog {
     bottom: 0;
     margin: auto;
     position: absolute;
+
+    padding: 2rem;
+    border-radius: 10px;
   }
+
+.dialog-wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+
+    gap: 1rem;
+
+    h2 {
+        margin-bottom: 1rem;
+    }
+
+    .input-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 2rem;
+    }
+
+    .input-btn {
+        display: flex;
+        justify-content: flex-end;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+}
+
+select {
+    text-align: center;
+    padding: 0 1rem;
+}
 
 /* BUTTON STYLING */
 
