@@ -82,7 +82,7 @@ html, body, .main {
     .switch {
         grid-area: 5 / 1 / 6 / 2;
     }
-    #delete-book {
+    .delBtn {
         grid-area: 5 / 2 / 6 / 3;
     }
 }

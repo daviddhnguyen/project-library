@@ -77,7 +77,7 @@ function renderCards() {
           <input type="checkbox">
           <span class="slider round"></span>
       </label>
-      <button class="btn sm-btn" id="delete-book">Delete</button>
+      <button class="btn sm-btn delBtn" id="${index}">Delete</button>
     `;
 
     //APPEND CARD TO CONTAINER
@@ -85,8 +85,24 @@ function renderCards() {
   });
 }
 
-function removeBook() {
-
+function removeBook(bookIndex) {
+  myLibrary.splice(bookIndex,1);
+  renderCards();
+  deleteCard();
 }
 
-renderCards();
+//DELETE CARD BUTTON
+function deleteCard() {
+  const delBook = document.querySelectorAll('.delBtn');
+
+  delBook.forEach(delBtn => {
+    delBtn.addEventListener('click', () => {
+    removeBook(delBtn.id); 
+    });
+  });
+};
+
+window.addEventListener('DOMContentLoaded', () => {
+  renderCards();
+  deleteCard();
+})
