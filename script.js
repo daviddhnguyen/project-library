@@ -11,24 +11,34 @@ myLibrary.push(book1, book2, book3);
 const addBook = document.querySelector('#addBook-btn');
 const addBookDialog = document.querySelector('#addBook-dialog');
 
-const newTitle = addBookDialog.querySelector('#title');
-const newAuthor = addBookDialog.querySelector('#author');
-const newPages = addBookDialog.querySelector('#pages');
-const newStatus = addBookDialog.querySelector('#status');
-const cancelBook = addBookDialog.querySelector('.cancel-addBook')
-const submitBook = addBookDialog.querySelector('.submit-addBook') 
+//DIALOG EVENT LISTENERS
+const $title = addBookDialog.querySelector('#title');
+const $author = addBookDialog.querySelector('#author');
+const $pages = addBookDialog.querySelector('#pages');
+const $status = addBookDialog.querySelector('#status');
+const $cancelBook = addBookDialog.querySelector('.cancel-addBook');
+const $submitBook = addBookDialog.querySelector('.submit-addBook');
 
 //DIALOG CODE
 addBook.addEventListener('click', () => {
+  $title.value = '';
+  $author.value = '';
+  $pages.value = '';
   addBookDialog.showModal();
 });
 
-//CANCEL BUTTON
-cancelBook.addEventListener('click', (e) => {
+//DIALOG CANCEL BUTTON
+$cancelBook.addEventListener('click', (e) => {
+  $title.value = '';
+  $author.value = '';
+  $pages.value = '';
   addBookDialog.close();
 })
 
+//DIALOG SUBMIT BUTTON
+$submitBook.addEventListener('click', addBookToLibrary)
 
+//BOOK CONSTRUCTOR
 function Book(title, author, pages, status) {
   // the constructor...
   this.title = title;
@@ -37,6 +47,7 @@ function Book(title, author, pages, status) {
   this.status  = status;
 }
 
+//ADD BOOK TO LIBRARY ARRAY
 function addBookToLibrary(title, author, pages, status) {
   // do stuff here
   const newBook = new Book(title, author, pages, status);
@@ -50,9 +61,6 @@ function renderCards() {
   })
 }
 
-// function addBookEventListener() {
-//   const addBook = document.querySelector('.addBook-button');
-//   addBook.addEventListener('click', ()=> {
-//     const form = document.
-//   })
-// }
+function removeBook() {
+
+}
