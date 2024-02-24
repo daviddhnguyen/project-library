@@ -63,6 +63,8 @@ function addBookToLibrary(title, author, pages, status) {
 }
 
 function renderCards() {
+  const cardContainer = document.querySelector('.card-container');
+  cardContainer.textContent = '';
   myLibrary.forEach((book, index) => {
     const bookCard = document.createElement('div');
     bookCard.classList.add('book-card', index);
@@ -79,7 +81,7 @@ function renderCards() {
     `;
 
     //APPEND CARD TO CONTAINER
-    document.querySelector('.card-container').appendChild(bookCard);
+    cardContainer.appendChild(bookCard);
   });
 }
 
