@@ -21,11 +21,8 @@ const $submitBook = addBookDialog.querySelector('.submit-addBook');
 
 //DIALOG CODE
 addBook.addEventListener('click', () => {
-  $title.value = '';
-  $author.value = '';
-  $pages.value = '';
   addBookDialog.showModal();
-});
+})
 
 //DIALOG CANCEL BUTTON
 $cancelBook.addEventListener('click', (e) => {
@@ -36,7 +33,13 @@ $cancelBook.addEventListener('click', (e) => {
 })
 
 //DIALOG SUBMIT BUTTON
-$submitBook.addEventListener('click', addBookToLibrary)
+$submitBook.addEventListener('click', () => {
+  addBookToLibrary($title.value, $author.value, $pages.value, $status.value);
+  $title.value = '';
+  $author.value = '';
+  $pages.value = '';
+  addBookDialog.close();
+})
 
 //BOOK CONSTRUCTOR
 function Book(title, author, pages, status) {
