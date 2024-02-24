@@ -26,18 +26,14 @@ addBook.addEventListener('click', () => {
 
 //DIALOG CANCEL BUTTON
 $cancelBook.addEventListener('click', (e) => {
-  $title.value = '';
-  $author.value = '';
-  $pages.value = '';
+  clrForm();
   addBookDialog.close();
 })
 
 //DIALOG SUBMIT BUTTON
 $submitBook.addEventListener('click', () => {
   addBookToLibrary($title.value, $author.value, $pages.value, $status.value);
-  $title.value = '';
-  $author.value = '';
-  $pages.value = '';
+  clrForm();
   addBookDialog.close();
 })
 
@@ -48,6 +44,13 @@ function Book(title, author, pages, status) {
   this.author = author;
   this.pages = pages;
   this.status  = status;
+}
+
+//CLEARS FORM FIELDS
+function clrForm() {
+  $title.value = '';
+  $author.value = '';
+  $pages.value = '';
 }
 
 //ADD BOOK TO LIBRARY ARRAY
@@ -61,9 +64,27 @@ function addBookToLibrary(title, author, pages, status) {
 
 function renderCards() {
   myLibrary.forEach((book, index) => {
-  })
+    const bookCard = document.createElement('div');
+    bookCard.classList.add('book-card', index);
+    bookCard.innerHTML = `
+      <div class="title">${book.title}</div>
+      <div class="author">${book.author}</div>
+      <div class="pages">${book.pages}</div>
+      <div class="status">${book.status}</div>
+      <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+      </label>
+      <button class="btn sm-btn" id="delete-book">Delete</button>
+    `;
+
+    //APPEND CARD TO CONTAINER
+    document.querySelector('.card-container').appendChild(bookCard);
+  });
 }
 
 function removeBook() {
 
 }
+
+renderCards();
