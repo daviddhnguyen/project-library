@@ -1,8 +1,8 @@
 const myLibrary = [];
 
 //EXAMPLE BOOKS
-const book1 = new Book('Ulysses', 'James Joyce', 732, 'Not read');
-const book2 = new Book('Don Quixote', 'Miguel de Cervantes', 1072, 'Not read');
+const book1 = new Book('Ulysses', 'James Joyce', 732, 'Not Read');
+const book2 = new Book('Don Quixote', 'Miguel de Cervantes', 1072, 'Not Read');
 const book3 = new Book('The Count of Monte Cristo', 'Alexandre Dumas', 1276, 'Read');
 
 myLibrary.push(book1, book2, book3);
@@ -102,12 +102,13 @@ function deleteCard() {
   });
 };
 
+//BOOK STATUS SWITCH
+
 function resetPage() {
   renderCards();
   deleteCard();
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-  renderCards();
-  deleteCard();
+  resetPage();
 })
