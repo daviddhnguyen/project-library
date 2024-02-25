@@ -59,7 +59,7 @@ function addBookToLibrary(title, author, pages, status) {
   const newBook = new Book(title, author, pages, status);
   myLibrary.push(newBook);
 
-  renderCards()
+  resetPage();
 }
 
 function renderCards() {
@@ -82,13 +82,12 @@ function renderCards() {
 
     //APPEND CARD TO CONTAINER
     cardContainer.appendChild(bookCard);
-  });
+  })
 }
 
 function removeBook(bookIndex) {
   myLibrary.splice(bookIndex,1);
-  renderCards();
-  deleteCard();
+  resetPage();
 }
 
 //DELETE CARD BUTTON
@@ -97,10 +96,16 @@ function deleteCard() {
 
   delBook.forEach(delBtn => {
     delBtn.addEventListener('click', () => {
-    removeBook(delBtn.id); 
+      console.log(delBtn.id);
+      removeBook(delBtn.id); 
     });
   });
 };
+
+function resetPage() {
+  renderCards();
+  deleteCard();
+}
 
 window.addEventListener('DOMContentLoaded', () => {
   renderCards();

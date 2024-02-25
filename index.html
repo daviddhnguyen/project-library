@@ -23,26 +23,6 @@
             <h1>Breadz Bookclub</h1>
         </div>
         <div class="card-container">
-            <div class="book-card">
-                <div class="title">title1</div>
-                <div class="author">author1</div>
-                <div class="status">Not read yet</div>
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                </label>
-                <button class="btn sm-btn" id="delete-book">Delete</button>
-            </div>
-            <div class="book-card">
-                <div class="title">title2</div>
-                <div class="author">author2</div>
-                <div class="status">Read</div>
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                </label>
-                <button class="btn sm-btn" id="delete-book">Delete</button>
-            </div>
         </div>
         <div>
             <button class="btn" id="addBook-btn">Add Book
@@ -71,17 +51,38 @@
                 <div class="input-container">
                     <label for="status"> <em>Have you read the book?*</em>
                         <select name="status" id="status">
-                            <option value="default">No</option>
-                            <option>Yes</option>
+                            <option value="Not Read">No</option>
+                            <option value="Read">Yes</option>
                         </select>
                     </label>
                 </div>
                 <div class="input-btn">
-                    <button class="btn sm-btn cancel-addBook" value="cancel" formmethod="dialog">Cancel</button>
-                    <button type="submit" class="btn sm-btn submit-addBook" value="default">Submit</button>
+                    <button class="btn sm-btn cancel-addBook" type="button">Cancel</button>
+                    <button type="button" class="btn sm-btn submit-addBook">Submit</button>
                 </div>
             </div>
         </form>
     </dialog>
 </body>
 </html>
+
+            <!-- <div class="book-card">
+                <div class="title">title1</div>
+                <div class="author">author1</div>
+                <div class="status">Not read yet</div>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+                <button class="btn sm-btn" id="delete-book">Delete</button>
+            </div>
+            <div class="book-card">
+                <div class="title">title2</div>
+                <div class="author">author2</div>
+                <div class="status">Read</div>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+                <button class="btn sm-btn" id="delete-book">Delete</button>
+            </div> -->
