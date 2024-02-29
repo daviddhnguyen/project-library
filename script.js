@@ -44,7 +44,15 @@ function Book(title, author, pages, status) {
   this.author = author;
   this.pages = pages;
   this.status  = status;
-}
+
+  this.toggleStatus = function() {
+    if (this.status == 'Not Read') {
+      this.status = 'Read';
+    } else if (this.status == 'Read') {
+      this.status = 'Not Read'
+    };
+  };
+};
 
 //CLEARS FORM FIELDS
 function clrForm() {
@@ -54,8 +62,8 @@ function clrForm() {
 }
 
 //ADD BOOK TO LIBRARY ARRAY
-function addBookToLibrary(title, author, pages, status) {
-  // do stuff here
+function addBookToLibrary(title, author, pages, status, bookNumber) {
+
   const newBook = new Book(title, author, pages, status);
   myLibrary.push(newBook);
 
@@ -71,10 +79,10 @@ function renderCards() {
     bookCard.innerHTML = `
       <div class="title">${book.title}</div>
       <div class="author">${book.author}</div>
-      <div class="pages">${book.pages}</div>
-      <div class="status">${book.status}</div>
-      <label class="switch">
-          <input type="checkbox">
+      <div class="pages">${book.pages} pages</div>
+      <div class="status" book-index="${index}">${book.status}</div>
+      <label class="switch" for="read">
+          <input type="checkbox" id="read" name="read" value="yes">
           <span class="slider round"></span>
       </label>
       <button class="btn sm-btn delBtn" id="${index}">Delete</button>
@@ -103,12 +111,23 @@ function deleteCard() {
 };
 
 //BOOK STATUS SWITCH
+function statusSwitch() {
+  const updateStatus = docuement.querySelectorAll('.switch');
 
+  updateStatus.forEach(btn => {
+    btn.addEventListener('click', () => {
+
+    })
+  })
+}
+
+//RESETS PAGE AND FUNCTIONS
 function resetPage() {
   renderCards();
   deleteCard();
 }
 
+//STARTUP FUNCTIONS
 window.addEventListener('DOMContentLoaded', () => {
   resetPage();
 })
