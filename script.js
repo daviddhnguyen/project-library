@@ -1,9 +1,10 @@
 const myLibrary = [];
+let bookTitle, bookAuthor, pages, readStatus, trash;
 
 //EXAMPLE BOOKS
-const book1 = new Book('Ulysses', 'James Joyce', 732, 'Not Read');
-const book2 = new Book('Don Quixote', 'Miguel de Cervantes', 1072, 'Not Read');
-const book3 = new Book('The Count of Monte Cristo', 'Alexandre Dumas', 1276, 'Read');
+const book1 = new Book('Ulysses', 'James Joyce', 732, false);
+const book2 = new Book('Don Quixote', 'Miguel de Cervantes', 1072, false);
+const book3 = new Book('The Count of Monte Cristo', 'Alexandre Dumas', 1276, true);
 
 myLibrary.push(book1, book2, book3);
 
@@ -32,7 +33,7 @@ $cancelBook.addEventListener('click', (e) => {
 
 //DIALOG SUBMIT BUTTON
 $submitBook.addEventListener('click', () => {
-  addBookToLibrary($title.value, $author.value, $pages.value, $status.value);
+  addBookToLibrary($title.value, $author.value, $pages.value, $status.checked);
   clrForm();
   addBookDialog.close();
 })
@@ -46,11 +47,7 @@ function Book(title, author, pages, status) {
   this.status  = status;
 
   this.toggleStatus = function() {
-    if (this.status == 'Not Read') {
-      this.status = 'Read';
-    } else if (this.status == 'Read') {
-      this.status = 'Not Read'
-    };
+    this.status = !this.status;
   };
 };
 
@@ -59,10 +56,11 @@ function clrForm() {
   $title.value = '';
   $author.value = '';
   $pages.value = '';
+  $status.checked = false;
 }
 
 //ADD BOOK TO LIBRARY ARRAY
-function addBookToLibrary(title, author, pages, status, bookNumber) {
+function addBookToLibrary(title, author, pages, status) {
 
   const newBook = new Book(title, author, pages, status);
   myLibrary.push(newBook);
@@ -73,23 +71,47 @@ function addBookToLibrary(title, author, pages, status, bookNumber) {
 function renderCards() {
   const cardContainer = document.querySelector('.card-container');
   cardContainer.textContent = '';
+
   myLibrary.forEach((book, index) => {
     const bookCard = document.createElement('div');
     bookCard.classList.add('book-card', index);
-    bookCard.innerHTML = `
-      <div class="title">${book.title}</div>
-      <div class="author">${book.author}</div>
-      <div class="pages">${book.pages} pages</div>
-      <div class="status" book-index="${index}">${book.status}</div>
-      <label class="switch" for="read">
-          <input type="checkbox" id="read" name="read" value="yes">
-          <span class="slider round"></span>
-      </label>
-      <button class="btn sm-btn delBtn" id="${index}">Delete</button>
-    `;
+
+    //CREATE CARD CONTENT DOM ELEMENTS
+    bookTitle = document.createElement('div');
+    bookAuthor = document.createElement('div');
+    bookPages = document.createElement('div');
+
+    bookStatus = document.createElement('button');
+    bookStatus.className = book.status ? 'read' : 'not-read';
+
+    bookTrash = document.createElement('button');
+    bookTrash.classList.add('btn','sm-btn','delBtn');
+    bookTrash.setAttribute('id', index)
+
+    //FILL CARD CONTENT
+    bookTitle.innerHTML = book.title;
+    bookAuthor.innerHTML = book.author;
+    bookPages.innerHTML = book.pages;
+    bookStatus.innerText = book.status ? 'Read' : 'Not Read';
+
+    //APPEND CARD CONTENT TO BOOK CARD
+    bookCard.appendChild(bookTitle);
+    bookCard.appendChild(bookAuthor);
+    bookCard.appendChild(bookPages);
+    bookCard.appendChild(bookStatus);
+    bookCard.appendChild(bookTrash);
 
     //APPEND CARD TO CONTAINER
     cardContainer.appendChild(bookCard);
+
+    bookStatus.addEventListener('click', () => {
+      book.toggleStatus();
+      resetPage();
+    });
+
+    bookTrash.addEventListener('click', () => {
+      removeBook(index);
+    })
   })
 }
 
@@ -98,33 +120,9 @@ function removeBook(bookIndex) {
   resetPage();
 }
 
-//DELETE CARD BUTTON
-function deleteCard() {
-  const delBook = document.querySelectorAll('.delBtn');
-
-  delBook.forEach(delBtn => {
-    delBtn.addEventListener('click', () => {
-      console.log(delBtn.id);
-      removeBook(delBtn.id); 
-    });
-  });
-};
-
-//BOOK STATUS SWITCH
-function statusSwitch() {
-  const updateStatus = docuement.querySelectorAll('.switch');
-
-  updateStatus.forEach(btn => {
-    btn.addEventListener('click', () => {
-
-    })
-  })
-}
-
 //RESETS PAGE AND FUNCTIONS
 function resetPage() {
   renderCards();
-  deleteCard();
 }
 
 //STARTUP FUNCTIONS
