@@ -27,15 +27,19 @@ addBook.addEventListener('click', () => {
 
 //DIALOG CANCEL BUTTON
 $cancelBook.addEventListener('click', (e) => {
-  clrForm();
+  resetModalDialog();
   addBookDialog.close();
 })
 
 //DIALOG SUBMIT BUTTON
 $submitBook.addEventListener('click', () => {
-  addBookToLibrary($title.value, $author.value, $pages.value, $status.checked);
-  clrForm();
-  addBookDialog.close();
+  const form = document.querySelector('.dialog-wrapper');
+
+  if (form.checkValidity()) {
+    addBookToLibrary($title.value, $author.value, $pages.value, $status.checked);
+    resetModalDialog();
+    addBookDialog.close();
+  }
 })
 
 //BOOK CONSTRUCTOR
@@ -52,11 +56,9 @@ function Book(title, author, pages, status) {
 };
 
 //CLEARS FORM FIELDS
-function clrForm() {
-  $title.value = '';
-  $author.value = '';
-  $pages.value = '';
-  $status.checked = false;
+function resetModalDialog() {
+
+  document.querySelector('.dialog-wrapper').reset();
 }
 
 //ADD BOOK TO LIBRARY ARRAY
@@ -92,7 +94,7 @@ function renderCards() {
     bookTitle.innerHTML = book.title;
     bookAuthor.innerHTML = book.author;
     bookPages.innerHTML = book.pages;
-    bookStatus.innerText = book.status ? 'Read' : 'Not Read';
+    bookStatus.innerHTML = book.status ? 'Read' : 'Not Read';
 
     //APPEND CARD CONTENT TO BOOK CARD
     bookCard.appendChild(bookTitle);
