@@ -94,14 +94,15 @@ function renderCards() {
     bookStatus.className = book.status ? 'read' : 'not-read';
 
     bookTrash = document.createElement('button');
-    bookTrash.classList.add('btn','sm-btn','delBtn');
+    bookTrash.classList.add('delBtn');
     bookTrash.setAttribute('id', index)
 
     //FILL CARD CONTENT
-    bookTitle.innerHTML = book.title;
-    bookAuthor.innerHTML = book.author;
-    bookPages.innerHTML = book.pages;
+    bookTitle.innerHTML = `<span>Title: </span> ${book.title}`;
+    bookAuthor.innerHTML = `<span>Author: </span> ${book.author}`;
+    bookPages.innerHTML = `<span>Pages: </span> ${book.pages}`;
     bookStatus.innerHTML = book.status ? 'Read' : 'Not Read';
+    bookTrash.innerHTML = `<span class="material-symbols-outlined">cancel</span>`;
 
     //APPEND CARD CONTENT TO BOOK CARD
     bookCard.appendChild(bookTitle);
