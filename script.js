@@ -10,6 +10,7 @@ const book3 = new Book('The Count of Monte Cristo', 'Alexandre Dumas', 1276, tru
 const addBook = document.querySelector('#addBook-btn');
 const addBookDialog = document.querySelector('#addBook-dialog');
 const cardContainer = document.querySelector('.card-container');
+const sampleBooks = document.querySelector('.no-books p');
 
 //DIALOG ELEMENTS
 const $title = addBookDialog.querySelector('#title');
@@ -18,6 +19,11 @@ const $pages = addBookDialog.querySelector('#pages');
 const $status = addBookDialog.querySelector('#status');
 const $cancelBook = addBookDialog.querySelector('.cancel-addBook');
 const $submitBook = addBookDialog.querySelector('.submit-addBook');
+
+//SAMPLE BOOKS
+sampleBooks.addEventListener('click', () => {
+  loadSampleBooks();
+})
 
 //DIALOG CODE
 addBook.addEventListener('click', () => {
@@ -36,7 +42,6 @@ $submitBook.addEventListener('click', () => {
 
   if (form.checkValidity()) {
     cardContainer.classList.remove('no-books')
-    cardContainer.textContent = '';
     
     addBookToLibrary($title.value, $author.value, $pages.value, $status.checked);
     resetModalDialog();
@@ -74,6 +79,7 @@ function addBookToLibrary(title, author, pages, status) {
 
 function renderCards() {
   const cardContainer = document.querySelector('.card-container');
+  cardContainer.textContent = '';
   
   myLibrary.forEach((book, index) => {
     const bookCard = document.createElement('div');
@@ -125,9 +131,9 @@ function removeBook(bookIndex) {
 
 function loadSampleBooks() {
   cardContainer.classList.remove('no-books')
-  cardContainer.textContent = '';
 
   myLibrary.push(book1, book2, book3);
+  resetPage();
 }
 
 
@@ -137,6 +143,6 @@ function resetPage() {
 }
 
 //STARTUP FUNCTIONS
-window.addEventListener('DOMContentLoaded', () => {
-  resetPage();
-})
+// window.addEventListener('DOMContentLoaded', () => {
+//   resetPage();
+// })
