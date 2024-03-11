@@ -86,12 +86,12 @@ body, .main {
 }
 
 .read {
-  background-color: seagreen;
+  background-color: rgba(42, 105, 38, 0.7);
 }
 
 .read:hover,
 .read:active {
-  opacity: 0.5;
+  background: rgba(42, 105, 38, 1);
 }
 
 /* NO BOOK TEXT */
@@ -253,6 +253,10 @@ select {
 .delBtn {
   background-color: inherit;
   color: var(--font-dark);
+  
+  span {
+    font-weight: 300;
+  }
 }
 
 .delBtn span:hover,
